@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  symbol: MyString
+  url: MyString
+  last_price: 1.5
+  img_url: MyString
+  quantity: 1.5
+
+two:
+  symbol: MyString
+  url: MyString
+  last_price: 1.5
+  img_url: MyString
+  quantity: 1.5
