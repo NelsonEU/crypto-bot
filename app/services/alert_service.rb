@@ -1,11 +1,14 @@
 class AlertService
   class << self
     def send_alerts
-      user = User.find(1)
-      coins = Cryptocompare::Price.find(user.tickers, user.default_currency)
+      User.all.each do |user|
+        coins = Cryptocompare::Price.find(user.tickers, user.default_currency)
 
-      alerts = coins.map do |coin_cmp|
-        create_alerts(coin_cmp, user)
+        alerts = coins.map do |coin_cmp|
+          create_alerts(coin_cmp, user)
+        end
+
+        NotificationsMailer.alert(alerts, user).deliver
       end
     end
 

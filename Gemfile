@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.2', '>= 6.1.2.1'
 # Use pgsql as the database for Active Record
 gem 'pg'
 gem 'sidekiq'
-# gem 'coinmarketcap'
+gem 'letter_opener', '1.6.0'
 gem 'cryptocompare'
 
 # Use Puma as the app server
