@@ -1,5 +1,5 @@
 class AlertJob < ApplicationJob
   def perform
-    ::AlertService.create_alerts
+    ::AlertService.send_alerts
   end
 end
