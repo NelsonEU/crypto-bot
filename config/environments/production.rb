@@ -104,10 +104,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
+    :domain               => ENV.fetch('ALERT_EMAIL_DOMAIN'),
     :user_name            => ENV.fetch('ALERT_EMAIL_ADDRESS'),
     :password             => ENV.fetch('GMAIL_PASSWORD'),
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    :authentication       => "plain"
   }
 
   # Inserts middleware to perform automatic connection switching.
