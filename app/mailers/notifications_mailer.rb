@@ -10,6 +10,6 @@ class NotificationsMailer < ApplicationMailer
     @alerts = alerts.sort { |a, b| b.variation <=> a.variation }
     @currency = user.default_currency.downcase == 'eur' ? '€' : '$'
 
-    mail to: user.email
+    mail(to: user.email, subject: 'Recurring prices notification')
   end
 end
