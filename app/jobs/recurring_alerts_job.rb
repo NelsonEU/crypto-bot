@@ -1,4 +1,4 @@
-class AlertJob < ApplicationJob
+class RecurringAlertsJob < ApplicationJob
   def perform
     ::AlertService.send_alerts
   end
