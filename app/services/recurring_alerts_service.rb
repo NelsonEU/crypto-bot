@@ -1,15 +1,19 @@
 class RecurringAlertsService
   class << self
     def send
+      p 'Starting...'
       User.all.each do |user|
+        p 'user found'
         coins = Cryptocompare::Price.find(user.tickers, user.default_currency)
 
         alerts = coins.map do |coin_cmp|
           create_alerts(coin_cmp, user)
         end
 
+        p 'sending to user'
         NotificationsMailer.alert(alerts, user).deliver
       end
+      p 'Ending'
     end
 
     private
