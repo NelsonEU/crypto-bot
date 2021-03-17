@@ -16,9 +16,9 @@
       <ul class="responsive-table">
         <% @alerts.each do |alert| %>
           <li class="table-row">
-            <div class="col col-1" data-label="Coin"><%= alert.coin.symbol %></div>
-            <div class="col col-2" data-label="Price"><%= number_with_delimiter(alert.price) %><%= @currency %></div>
-            <div class="col col-3" data-label="Variation" style="color: <%= alert.variation.positive? ? 'green' : 'red' %>">
+            <div style="margin-left: 32px; margin-right: 32px" class="col col-1" data-label="Coin"><%= alert.coin.symbol %></div>
+            <div style="margin-left: 32px; margin-right: 32px" class="col col-2" data-label="Price"><%= number_with_delimiter(alert.price) %><%= @currency %></div>
+            <div style="margin-left: 32px; margin-right: 32px" class="col col-3" data-label="Variation" style="color: <%= alert.variation.positive? ? 'green' : 'red' %>">
               <%= alert.variation.round(2) %>%
             </div>
           </li>
