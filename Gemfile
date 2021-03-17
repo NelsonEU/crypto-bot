@@ -10,7 +10,6 @@ gem 'pg'
 gem 'sidekiq'
 gem 'letter_opener', '1.6.0'
 gem 'cryptocompare'
-gem 'postmark-rails', '~> 0.19.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
