@@ -2,7 +2,7 @@ class RecurringAlertsService
   class << self
     def send
       User.all.each do |user|
-        next unless should_alert_user(user) || user.id != 1
+        next unless should_alert_user(user)
 
         recurring_alert = create_recurring_alert(user)
         NotificationsMailer.alert(recurring_alert, user).deliver
@@ -12,8 +12,7 @@ class RecurringAlertsService
     private
 
     def should_alert_user(user)
-      true
-      # (user.last_recurring_alert.created_at + "#{user.alerts_every} min") < DateTime.now
+      (user.last_recurring_alert.created_at + "#{user.alerts_every} min") < DateTime.now
     end
 
     def create_recurring_alert(user)
