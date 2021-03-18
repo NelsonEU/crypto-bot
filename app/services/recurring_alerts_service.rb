@@ -13,7 +13,7 @@ class RecurringAlertsService
     private
 
     def should_alert_user(user)
-      (user.last_recurring_alert.created_at + "#{user.alerts_every} min") < DateTime.now
+      (user.last_recurring_alert.created_at + user.alerts_every.min) < DateTime.now
     end
 
     def create_recurring_alert(user)
