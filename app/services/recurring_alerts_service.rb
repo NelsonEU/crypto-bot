@@ -3,6 +3,7 @@ class RecurringAlertsService
     def send
       User.all.each do |user|
         next unless should_alert_user(user)
+        warn("Sending alert for user: #{user.id}")
 
         recurring_alert = create_recurring_alert(user)
         NotificationsMailer.alert(recurring_alert, user).deliver
