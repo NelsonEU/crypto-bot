@@ -139,8 +139,13 @@
                 <td align="center" valign="top" style="padding: 24px 0 24px 0;">
                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                      <td align="center" valign="middle">
-                        <h1>Crypto Bot</h1>
+                      <td align="center" valign="middle" style="width: 30%;">
+                      </td>
+                      <td align="center" valign="middle" style="width: 40%;">
+                        <%# <h1>Crypto Bot</h1> %>
+                        <img src="https://i.ibb.co/b6hxky0/output-onlinepngtools-1.png" alt="output-onlinepngtools-1" style="width: 100%" border="0">
+                      </td>
+                      <td align="center" valign="middle" style="width: 30%;">
                       </td>
                     </tr>
                   </table>
@@ -154,7 +159,7 @@
                   <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
                       <td align="left" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
-                        Goodmorning <b><%= @username %></b>,
+                        Good morning <b><%= @username %></b>,
                       </td>
                     </tr>
                     <tr>
@@ -185,7 +190,7 @@
                                     </td>
                                     <td align="middle" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 33%">
                                       <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                        <%= alert.price %>
+                                        <%= alert.price %> €
                                       </table>
                                     </td>
                                     <td align="right" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA;width: 33%; color: <%= alert.variation.positive? ? 'green' : 'red' %>">
