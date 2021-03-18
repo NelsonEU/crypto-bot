@@ -132,7 +132,7 @@
 
           <center>
 
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="wrapper" style="max-width: 640px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="wrapper" style="max-width: 800px;">
 
               <!-- Start of header -->
               <tr>
@@ -171,11 +171,67 @@
                         Here is your daily notification:
                       </td>
                     </tr>
+                    <tr>
+                      <td align="left" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="middle" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                        Portfolio worth: <strong><%= @total_value.round(2) %> <%= @currency %></strong>
+                      </td>
+                    </tr>
                   </table>
 
                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                       <tr>
                         <td align="left" valign="top" style="padding: 0 0 24px 0;">
+
+
+
+
+                          <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-bottom: 8px;">
+                            <tr>
+                              <td align="left" valign="top" style="padding: 12px 24px 12px 24px; border-radius: 4px; background-color: #eaecef;">
+                                <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                  <tr>
+                                    <td align="left" valign="top" style="padding: 12px; border-radius: 4px; background-color: #eaecef; width: 20%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <strong>Coin</strong>
+                                      </table>
+                                    </td>
+                                    <td align="middle" valign="top" style="padding: 12px; border-radius: 4px; background-color: #eaecef; width: 20%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <strong>Price</strong>
+                                      </table>
+                                    </td>
+                                    <td align="middle" valign="top" style="padding: 12px; border-radius: 4px; background-color: #eaecef; width: 20%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <strong>Quantity</strong>
+                                      </table>
+                                    </td>
+                                    <td align="middle" valign="top" style="padding: 12px; border-radius: 4px; background-color: #eaecef; width: 20%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <strong>Value</strong>
+                                      </table>
+                                    </td>
+                                    <td align="right" valign="top" style="padding: 12px; border-radius: 4px; background-color: #eaecef;width: 20%;">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <strong>Variation</strong>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+
+
+
+
                           <% @alerts.each do |alert| %>
                           <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-bottom: 8px;">
                             <tr>
@@ -183,17 +239,27 @@
                               <%# line %>
                                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                   <tr>
-                                    <td align="left" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 33%">
+                                    <td align="left" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 20%">
                                       <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                         <%= alert.coin.symbol %>
                                       </table>
                                     </td>
-                                    <td align="middle" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 33%">
+                                    <td align="middle" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 20%">
                                       <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                         <%= alert.price %> €
                                       </table>
                                     </td>
-                                    <td align="right" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA;width: 33%; color: <%= alert.variation.positive? ? 'green' : 'red' %>">
+                                    <td align="middle" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 20%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <%= alert.coin.formatted_quantity %>
+                                      </table>
+                                    </td>
+                                    <td align="middle" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 20%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <%= alert.value.round(2) %> €
+                                      </table>
+                                    </td>
+                                    <td align="right" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA;width: 20%; color: <%= alert.variation.positive? ? 'green' : 'red' %>">
                                       <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                         <%= alert.variation.round(2) %>%
                                       </table>
