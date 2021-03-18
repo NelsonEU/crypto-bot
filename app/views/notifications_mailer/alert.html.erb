@@ -1,31 +1,235 @@
-<div style="text-align: center; background-color:#E5E5E5; border: 0; margin: 0; padding: 0; min-width: 100%; min-height: 100%; ">
-  <div style="display:flex; padding-top: 64px; padding-bottom: 64px;">
-    <div style="width: fit-content;
-                margin-left: auto;
-                margin-right: auto;
-                box-shadow: 0px 4px 8px rgb(23 28 36 / 20%);
-                border-radius: 4px;
-                padding: 24px 64px 24px 64px;
-                background-color: #FFF;
-                text-align: center"
-    >
-      <h1>Crypto Bot</h1>
-      <p style="margin: 8px">
-        Hi <%= @username %>, here is your daily portfolio:
-      </p>
-      <ul class="responsive-table">
-        <% @alerts.each do |alert| %>
-          <li class="table-row" style="background-color: #ffffff; box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);">
-            <div style="margin-left: 32px; margin-right: 32px" class="col col-1" data-label="Coin"><%= alert.coin.symbol %></div>
-            <div style="margin-left: 32px; margin-right: 32px" class="col col-2" data-label="Price"><%= number_with_delimiter(alert.price) %><%= @currency %></div>
-            <div style="margin-left: 32px; margin-right: 32px" class="col col-3" data-label="Variation" style="color: <%= alert.variation.positive? ? 'green' : 'red' %>">
-              <%= alert.variation.round(2) %>%
-            </div>
-          </li>
-        <% end %>
-      </ul>
-      <p>See you on the moon! 🚀</p>
-    </div>
-  </div>
-  <img src="https://wi-images.condecdn.net/image/QjoeBmpJGnE/crop/1440/f/wired-uk-stonks.jpg" style="width: 50%; margin-bottom: 32px;">
-</div>
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    <title>Crypto Bot</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+      /**
+       * Client-specific styles
+       * ==================================================
+       */
+
+      /* Prevent WebKit and Windows mobile from changing default text sizes */
+
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      /* Remove spacing between tables in Outlook 2007 and up */
+
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      /* Allow smoother rendering of resized image in Internet Explorer */
+
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+
+      /* Prevent iOS from forcing link styles */
+
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        font-weight: inherit !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        font-family: inherit !important;
+        text-decoration: none !important;
+      }
+
+      /**
+       * Reset styles
+       * ==================================================
+       */
+
+      body {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #F7F8FA !important;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        height: auto;
+        border: 0;
+        line-height: 100%;
+        text-decoration: none;
+        outline: none;
+      }
+
+      table {
+        border-collapse: collapse !important;
+      }
+
+      /**
+       * Mobile styles
+       * ==================================================
+       */
+
+      @media screen and (max-width: 480px) {
+        .wrapper {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+
+        .img-fluid {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+        }
+
+        /* utils */
+
+        .mobile-hide {
+          display: none !important;
+        }
+
+        .mobile-no-padding {
+          padding: 0 !important;
+        }
+
+        .mobile-no-border {
+          border: 0 !important;
+        }
+
+        .mobile-no-border-radius {
+          border-radius: 0 !important;
+        }
+
+        .mobile-text-left {
+          text-align: left !important;
+        }
+
+        .mobile-text-center {
+          text-align: center !important;
+        }
+
+        .mobile-text-right {
+          text-align: right !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0 !important; padding: 0 !important; background-color: #F7F8FA !important;">
+
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" style="margin-bottom: 48px;">
+      <tr>
+        <td align="center" valign="top" class="mobile-no-padding" style="padding: 0 24px 0 24px;">
+
+          <center>
+
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="wrapper" style="max-width: 640px;">
+
+              <!-- Start of header -->
+              <tr>
+                <td align="center" valign="top" style="padding: 24px 0 24px 0;">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" valign="middle">
+                        <h1>Crypto Bot</h1>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr><!-- End of header -->
+
+              <!-- Start of content -->
+              <tr>
+                <td bgcolor="#FFFFFF" align="center" valign="top" class="mobile-no-border mobile-no-border-radius" style="padding: 48px 48px 48px 48px; border: 1px solid #D5DBE6; border-radius: 4px;">
+
+                  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td align="left" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                        Goodmorning <b><%= @username %></b>,
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top" style="padding: 0 0 8px 0; color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                        Here is your daily notification:
+                      </td>
+                    </tr>
+                  </table>
+
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td align="left" valign="top" style="padding: 0 0 24px 0;">
+                          <% @alerts.each do |alert| %>
+                          <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-bottom: 8px;">
+                            <tr>
+                              <td align="left" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA;">
+                              <%# line %>
+                                <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                  <tr>
+                                    <td align="left" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 33%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <%= alert.coin.symbol %>
+                                      </table>
+                                    </td>
+                                    <td align="middle" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA; width: 33%">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <%= alert.price %>
+                                      </table>
+                                    </td>
+                                    <td align="right" valign="top" style="padding: 24px; border-radius: 4px; background-color: #F7F8FA;width: 33%; color: <%= alert.variation.positive? ? 'green' : 'red' %>">
+                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                        <%= alert.variation.round(2) %>%
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                          <% end %>
+                        </td>
+                      </tr>
+                    </table>
+
+                  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td align="left" valign="top" style="color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                        See you on the moon! 🚀<br />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top" style="color: #171C24; font-weight: normal; font-size: 15px; line-height: 24px; font-family: system, -apple-system, 'San Francisco', Roboto, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;">
+                        Crypto Bot
+                      </td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr><!-- End of content -->
+              <tr>
+                <td style="padding: 64px;">
+                  <img src="https://wi-images.condecdn.net/image/QjoeBmpJGnE/crop/1440/f/wired-uk-stonks.jpg" width="100%">
+                </td>
+              </tr>
+            </table>
+
+          </center>
+
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
