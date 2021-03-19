@@ -35,14 +35,8 @@ class RecurringAlertsService
       RecurringAlertLine.create(
         coin: coin,
         price: coin.last_price,
-        variation: variation(coin.last_price, old_price)
+        variation: coin.variation(old_price)
       )
-    end
-
-    def variation(new_price, old_price)
-      return 0 if old_price.nil? || old_price.zero?
-
-      100 * (new_price - old_price) / old_price
     end
   end
 end

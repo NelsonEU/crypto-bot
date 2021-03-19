@@ -14,4 +14,13 @@ class Coin < ApplicationRecord
 
     quantity
   end
+
+  #
+  # Utilities
+  #
+  def variation(old_price)
+    return 0 if old_price.nil? || old_price.zero?
+
+    100 * (last_price - old_price) / old_price
+  end
 end
